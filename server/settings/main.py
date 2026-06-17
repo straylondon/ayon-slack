@@ -1,6 +1,7 @@
 from ayon_server.settings import SettingsField, BaseSettingsModel
 
 from .publish_plugins import SlackPublishPlugins
+from .event_plugins import SlackEventSettings
 
 
 class SlackSettings(BaseSettingsModel):
@@ -12,6 +13,10 @@ class SlackSettings(BaseSettingsModel):
         title="Publish plugins",
         description="Fill combination of families, task names and hosts "
                     "when to send notification",
+    )
+    events: SlackEventSettings = SettingsField(
+        default_factory=SlackEventSettings,
+        title="Event notifications",
     )
 
 
